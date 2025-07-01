@@ -1,0 +1,14 @@
+.link {
+  text-decoration: none;
+}
+
+.eventCard {
+  font-family: 'ArabicFont', Arial, sans-serif;
+  background: linear-gradient(#0b1626, #031e49, #040f21);
+  align-items: center;
+  border: 6px solid #faa61a;
+  height: 150px;
+  width: 250px;
+  margin: auto;
+  justify-content: center;
+}

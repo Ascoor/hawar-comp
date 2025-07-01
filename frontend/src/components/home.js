@@ -10,14 +10,8 @@ import prevYear from "../assest/icons/prevyear.jpg";
 import yearPay from "../assest/icons/yearpay.jpg";
 import ignoredIcon from "../assest/icons/ignored-member.png";
 import DashBoard from "../images/logo2.png";
-import {
-  Card,
-  Container,
-  // Row,
-  //  Col,
-  //   Button,
-  //  Form
-} from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
+import styles from './Home.module.css';
 import { useSpring, animated } from '@react-spring/web';
 import axios from 'axios';
 import API_CONFIG from '../config';
@@ -52,36 +46,22 @@ const useIconCardAnimation = () => {
 const EventCard = ({ title, count, icon }) => {
   const { cardSpringStyles, handleHover, handleHoverEnd } = useIconCardAnimation();
 
-  return (<animated.div
-    style={cardSpringStyles}
-    onMouseEnter={handleHover}
-    onMouseLeave={handleHoverEnd}
-    onTouchStart={handleHover}
-    onTouchEnd={handleHoverEnd}
-
-  >
-    <Card className="text-center event-card m-3" style={{
-
-      fontFamily: "'ArabicFont', Arial, sans-serif",
-      background: "linear-gradient(#0b1626, #031e49, #040f21)",
-
-      alignItems: "center",
-
-      border: "6px solid #faa61a",
-      height:"150px",
-      width:"250px",
-      padding:"auto",
-      margin:"auto",
-
-      justifyContent: "center",
-    }}>
-      <Card.Body className="event-card-body">
-        <div className="event-card-icon">{icon}</div>
-        <div className="event-card-title m-10">{title}</div>
-        <span className="count">{count}</span>
-      </Card.Body>
-    </Card>
-  </animated.div>
+  return (
+    <animated.div
+      style={cardSpringStyles}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHoverEnd}
+      onTouchStart={handleHover}
+      onTouchEnd={handleHoverEnd}
+    >
+      <Card className={`text-center event-card m-3 ${styles.eventCard}`}>
+        <Card.Body className="event-card-body">
+          <div className="event-card-icon">{icon}</div>
+          <div className="event-card-title m-10">{title}</div>
+          <span className="count">{count}</span>
+        </Card.Body>
+      </Card>
+    </animated.div>
   );
 };
 function toArabicNumeral(en) {
@@ -107,9 +87,6 @@ const Home = () => {
   // const [searchType, setSearchType] = useState('clients'); // State to store the selected search type
 
   useEffect(() => {
-
-  }, []);
-  useEffect(() => {
     fetchWorkMemberCount();
   }, []);
 
@@ -133,40 +110,6 @@ const Home = () => {
 
 
 
-  // const handleFormSubmit = async (e) => {
-  //     e.preventDefault();
-  //     handleSearch();
-  // };
-
-  // const handleSearch = async () => {
-  //     setShowResults(true); // Show search results
-
-  //     try {
-  //         let endpoint = '';
-
-  //         if (searchType === 'clients') {
-  //             endpoint = `${API_CONFIG.baseURL}/api/client-search`;
-  //         } else if (searchType === 'legCases') {
-  //             endpoint = `${API_CONFIG.baseURL}/api/leg-case-search`;
-  //         }
-
-  //         const response = await axios.get(endpoint, {
-  //             params: {
-  //                 query: searchText,
-  //             },
-  //         });
-
-
-  //         setSearchResults(response.data);
-  //     } catch (error) {
-  //         console.log(error);
-  //     }
-  // };
-
-
-  // const handleSearchInputChange = (e) => {
-  //     setSearchText(e.target.value);
-  // };
 
   return (
 
@@ -179,8 +122,7 @@ const Home = () => {
         </Card.Header>
         <Card.Body>
           <div className="d-flex flex-wrap justify-content-center mb-3">
-            {/* Add the "custom-text-center" class */}
-            <Link to="/members" style={{ textDecoration: 'none' }}>
+            <Link to="/members" className={styles.link}>
               <EventCard
                 title="الاعضاء العاملين"
 
@@ -188,7 +130,7 @@ const Home = () => {
                 icon={<img src={MemberIcon} alt="Icon" className="members-icon" />}
               />
             </Link>
-            <Link to="/legcases" style={{ textDecoration: 'none' }}>
+            <Link to="/legcases" className={styles.link}>
               <EventCard
                 title="الاعضاء التابعين"
 
@@ -196,7 +138,7 @@ const Home = () => {
                 icon={<img src={partMemberIcon} alt="Icon" className="part-members-icon" />}
               />
             </Link>
-            <Link to="/procedures" style={{ textDecoration: 'none' }}>
+            <Link to="/procedures" className={styles.link}>
               <EventCard
                 title="الأعضاء الذكور"
 
@@ -253,8 +195,7 @@ const Home = () => {
         </Card.Body>
       </Card>
 
-      {/* Uncomment and add the relevant content for your search results */}
-    </Container>
+      </Container>
   );
 };
 
