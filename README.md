@@ -42,3 +42,15 @@ export default API_CONFIG;
 ```
 
 Modify `baseURL` to match the host and port of your API. For example, when running in production you might set it to `https://api.example.com`. You can create different copies of this file for development, staging, and production environments as needed.
+
+## Seeding Example Data
+
+Run the Laravel seeders after configuring your `.env` connection:
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+This populates the lookup tables (`member_category`, `member_relation`, `member_status`, `membership_renew_settings`) and a few sample records in `member_details`.
+
