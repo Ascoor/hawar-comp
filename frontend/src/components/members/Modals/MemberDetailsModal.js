@@ -1,13 +1,10 @@
 import React from 'react';
 import { Modal, Card, Button, Row, Col } from 'react-bootstrap';
 import API_CONFIG from '../../../config';
+import styles from './MemberDetailsModal.module.css';
 
 
-const MemberDetailsModal = ({ show, member, onClose   }) => {
-  if (!show || !member) {
-    return null;
-  }
-
+const MemberDetailsModal = ({ show, member, onClose }) => {
   if (!show || !member) {
     return null;
   }
@@ -20,9 +17,9 @@ const MemberDetailsModal = ({ show, member, onClose   }) => {
   const parsedNotes = JSON.parse(member.notes);
 
   return (
-       <Modal show={show} onHide={onClose} dir="rtl" centered>
-      <Modal.Header closeButton style={{ backgroundColor: '#f5f5f5', borderBottom: '1px solid #dee2e6' }}>
-        <Modal.Title style={{ color: '#4CAF50' }}>تفاصيل العضو</Modal.Title>
+    <Modal show={show} onHide={onClose} dir="rtl" centered>
+      <Modal.Header closeButton className={styles.modalHeader}>
+        <Modal.Title className={styles.modalTitle}>تفاصيل العضو</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Card className="mb-3">
@@ -31,29 +28,19 @@ const MemberDetailsModal = ({ show, member, onClose   }) => {
               <Col md={6} className="d-flex align-items-center justify-content-center">
                 {/* Add member's photo here */}
                 <div
-                  className="rounded-circle overflow-hidden mx-auto d-block mb-2"
-                  style={{
-                    width: '175px',
-                    height: '175px',
-                    border: '5px solid #4CAF50',
-                    boxShadow: '0 4px 8px rgba(220 170 22)',
-                  }}
+                  className={`rounded-circle overflow-hidden mx-auto d-block mb-2 ${styles.photoWrapper}`}
                 >
                   {member.photo ? (
                     <Card.Img
                       src={`${API_CONFIG.baseURL}/UserPics/${member.photo}`}
                       alt="Member Photo"
-                      style={{
-                        objectFit: 'cover',
-                        width: '100%',
-                        height: '100%',
-                      }}
+                      className={styles.memberImage}
                       onError={handleImageError}
                     />
                   ) : (
                     <div
                       className="d-flex align-items-center justify-content-center"
-                      style={{ width: '100%', height: '100%', fontSize: '20px', fontWeight: 'bold', color: '#4CAF50' }}
+                      className={styles.noPhoto}
                     >
                       صورة العضو غير متوفرة
                     </div>
@@ -61,17 +48,17 @@ const MemberDetailsModal = ({ show, member, onClose   }) => {
                 </div>
               </Col>
               <Col md={6}>
-                <Card.Title style={{ color: '#4CAF50', fontSize: '20px', fontWeight: 'bold' }}>بيانات العضو</Card.Title>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>الاسم: {member.name}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>الرقم التسجيلي: {member.member_id}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>الفئة: {member.category_id}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>العلاقة: {member.relation_id}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>الجنس: {member.gender}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>الديانة: {member.relegion}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>العنوان: {member.address}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>المهنة: {member.profession}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>الحالة: {member.status_id}</Card.Text>
-                <Card.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>الهاتف: {member.phone}</Card.Text>
+                <Card.Title className={styles.cardTitle}>بيانات العضو</Card.Title>
+                <Card.Text className={styles.infoText}>الاسم: {member.name}</Card.Text>
+                <Card.Text className={styles.infoText}>الرقم التسجيلي: {member.member_id}</Card.Text>
+                <Card.Text className={styles.infoText}>الفئة: {member.category_id}</Card.Text>
+                <Card.Text className={styles.infoText}>العلاقة: {member.relation_id}</Card.Text>
+                <Card.Text className={styles.infoText}>الجنس: {member.gender}</Card.Text>
+                <Card.Text className={styles.infoText}>الديانة: {member.relegion}</Card.Text>
+                <Card.Text className={styles.infoText}>العنوان: {member.address}</Card.Text>
+                <Card.Text className={styles.infoText}>المهنة: {member.profession}</Card.Text>
+                <Card.Text className={styles.infoText}>الحالة: {member.status_id}</Card.Text>
+                <Card.Text className={styles.infoText}>الهاتف: {member.phone}</Card.Text>
               </Col>
                </Row>
               
