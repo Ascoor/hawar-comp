@@ -60,6 +60,19 @@ def transform(csv_path: Path):
 
 if __name__ == '__main__':
     import json, sys
-    path = Path(sys.argv[1])
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Clean legacy member CSV data")
+    parser.add_argument("file", help="Path to legacy CSV")
+    parser.add_argument("--csv", action="store_true", help="Output CSV instead of JSON")
+    args = parser.parse_args()
+
+    path = Path(args.file)
     records = transform(path)
-    json.dump(records, sys.stdout, ensure_ascii=False, indent=2)
+
+    if args.csv:
+        writer = csv.DictWriter(sys.stdout, fieldnames=records[0].keys())
+        writer.writeheader()
+        writer.writerows(records)
+    else:
+        json.dump(records, sys.stdout, ensure_ascii=False, indent=2)
