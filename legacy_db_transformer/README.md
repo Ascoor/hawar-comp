@@ -46,3 +46,20 @@ python transfer_sqls.py \
 ```
 
 Make sure `pymysql` is installed by installing `requirements.txt` first.
+
+### Generating Laravel Seeders
+
+The script `sql_to_seeder.py` converts legacy `INSERT` dumps directly into
+Laravel-compatible seeder classes. Large tables can be split into multiple
+seeders by specifying a chunk size.
+
+Example usage:
+
+```bash
+python sql_to_seeder.py sqls/ --schema ../backend/sqls/create_tables.sql \
+  --output ../backend/database/seeders --chunk 500
+```
+
+This reads all `.sql` files from `sqls/`, resolves column names from the
+`create_tables.sql` schema file and writes seeder classes into the Laravel
+`database/seeders` directory. Each seeder contains at most 500 records.
