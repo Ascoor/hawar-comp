@@ -13,14 +13,20 @@ php artisan db:seed
 
 ## 2. تنظيف البيانات القديمة
 
-استخدم السكربت Python الموجود في `backend/scripts/transform_members.py` لتحويل ملف SQL أو CSV القديم إلى ملف CSV نظيف مع إزالة التكرارات:
+استخدم أحد سكربتات Python في مجلد `backend/scripts` لتنظيف الملفات القديمة وتحويلها إلى CSV منسق. للملفات الصغيرة يكفي تشغيل `transform_members.py`:
 
 ```bash
 python backend/scripts/transform_members.py path/to/legacy.sql --csv > clean.csv
 ```
 
-يجب أن يحتوي الملف الناتج على الحقول:
-`name,member_code,national_id,birth_date,join_date,gender,status,relation,fee_year,fee_amount`.
+أما عند التعامل مع ملفات كبيرة أو عناوين حقول مختلطة بالعربية والإنجليزية فينصح باستخدام السكربت الجديد `normalize_membership_csv.py` الذي يتعرف على الحقول المختلفة ويطبع النتيجة بالتنسيق التالي:
+
+```bash
+python backend/scripts/normalize_membership_csv.py path/to/legacy.csv > clean.csv
+```
+
+الملف الناتج يحتوي على الأعمدة:
+`id,name,code,national_id,birth_date,gender,category,relation_type,status,parent_member_id,join_date,address,phone,mobile,notes,last_paid_fee`.
 
 ## 3. استيراد البيانات
 
