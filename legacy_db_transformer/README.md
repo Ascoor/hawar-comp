@@ -33,3 +33,16 @@ The script reads all `*.sql` files from `INPUT_DIR`, fixes the relationships, an
 * **Output**: Cleaned `INSERT` files in the output directory or data inserted into a staging database.
 
 Progress and errors are logged to stdout using Python's `logging` module.
+
+### Example MySQL Transfer
+
+For a quick start with MySQL you can use the helper script `transfer_sqls.py`.
+It reads all `.sql` files from the `sqls` folder and loads them into the
+database specified by the connection string:
+
+```bash
+python transfer_sqls.py \
+  --db mysql+pymysql://askar:Askar@1984@127.0.0.1:3306/askar
+```
+
+Make sure `pymysql` is installed by installing `requirements.txt` first.
