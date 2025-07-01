@@ -14,6 +14,13 @@ This directory contains a minimal Laravel setup intended to expose API endpoints
 php artisan migrate
 ```
 
+To import the sample member data stored in `backend/sqls`, execute the
+application seeders after running the migrations:
+
+```
+php artisan db:seed
+```
+
 Start the development server with:
 
 ```

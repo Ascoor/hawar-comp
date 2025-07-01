@@ -8,6 +8,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call([LookupSeeder::class]);
+        $this->call([
+            LookupSeeder::class,
+            SqlImportSeeder::class,
+        ]);
     }
 }

@@ -10,8 +10,12 @@ return new class extends Migration {
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
             $table->foreignId('member_id')->constrained('members');
-            $table->decimal('amount', 8, 2);
-            $table->string('fiscal_year');
+            $table->integer('Fee_Year');
+            $table->decimal('Fee_Amount', 10, 2);
+            $table->date('Fee_Date')->nullable();
+            $table->string('Fee_RecieptNumber')->nullable();
+            $table->integer('Fee_Status')->nullable();
+            $table->integer('Fee_User_ID')->nullable();
             $table->timestamps();
         });
     }
