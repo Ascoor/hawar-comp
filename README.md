@@ -54,3 +54,7 @@ php artisan db:seed
 
 This populates the lookup tables (`member_category`, `member_relation`, `member_status`, `membership_renew_settings`) and a few sample records in `member_details`.
 
+
+## Data Migration
+
+For instructions on migrating legacy membership records into the Laravel schema see [docs/migration.md](docs/migration.md).
