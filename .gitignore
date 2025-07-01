@@ -1,8 +1,11 @@
 ## /legacy_db_transformer/ python script
 # This script is used to transform legacy database schemas to the new format.
 # It should not be included in the production environment ignore list. 
-legacy_db_transformer/
-# This directory contains the Python script for transforming legacy database schemas.
+legacy_db_transformer/__pycache__/
+# This directory contains the compiled Python files for the legacy database transformer.
+legacy_db_transformer/venv/
+
+
 # It is essential for maintaining compatibility with older database structures.
 legacy_db_transformer/transform.py
 # This script is crucial for the migration process and should be kept in the repository.
