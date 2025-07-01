@@ -1,0 +1,681 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
+/* @font-face {
+  font-family: 'THARWAT EMARA RUQAA LIGHT';
+  src: url('../src/assest/fonts/alfont_com_ArbFONTS-THARWATEMARARUQAALIGHT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+body.modal-open {
+  overflow: hidden;
+}
+body {
+
+    margin: 0;
+    font-family: "cairo,sans-serif;', Arial, sans-serif";
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+
+/**Welcome Page***/
+
+
+* {
+
+  direction: rtl;
+}
+
+/* Centered content */
+.centered-content {
+  position: absolute;
+  top: 50%;
+  right: -40%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Card styles */
+.centered-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 400px;
+  background-color: #011c44; /* Card background color */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Card shadow */
+}
+
+/* Backlit effect on the background */
+.bg-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+    background: linear-gradient(#0b1626, #031e49, #040f21);
+ 
+}
+/* Backlit effect on the background */
+.bg-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/patr.png');
+  background-repeat: repeat;
+  background-size: auto;
+  opacity: .2; /* Adjust the opacity as desired */
+}
+
+
+.centered-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center the content vertically */
+}
+
+.btn-login-auth{
+
+    width:120px
+
+
+}
+.btn-register-auth{
+
+  width: 130px;
+
+}
+.btn-group {
+  margin-right: 47px;
+    display: inherit;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* CSS في ملف app.css أو في جزء الأنماط الخاص بك */
+
+.logo {
+  /* خاصية box-shadow لإضافة ظل للشعار */
+  box-shadow: 0 0 25px #faa61a, /* ظل فاتح */
+              0 10px 20px #faa61a; /* ظل داكن */
+
+  border-radius: 90px; 
+
+  
+}
+
+
+
+
+
+.hline {
+  height: 1px;
+  width: 100%;
+  background: rgba(100, 100, 200, 0.5);
+  margin-top: 5px;
+  /*border-top: 1px solid rgba(200,200,200,0.2);*/
+}
+
+body {
+  font-family: 'ArabicFont', Arial, sans-serif;
+}
+
+.logo {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.welcome-page-icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+/* Form styles */
+.form-icon {
+  margin-right: 0.5rem;
+  color : #faa61a;
+}
+.container {
+  margin: 50px auto;
+  width: 80%;
+}
+
+.carousel-item {
+  text-align: center;
+  height: 200px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+}
+
+h1, p {
+  color:#faa61a;
+}
+@media (max-width: 768px) {
+  /* Adjust styles for mobile */
+}
+/* Adjust the font styles and other elements as needed */
+
+  .login-btn {
+    border-color: #d3c314;
+    BACKGROUND: #faa61a;
+}
+
+.card-title-login-form {
+  margin-bottom: var(--bs-card-title-spacer-y);
+  color: #faa61a;
+  font-family: 'ArabicFont', Arial, sans-serif;
+  font-size: 1.6rem;
+  margin: 0 auto;
+    font-weight: bold;
+}
+.card-header {
+  display: flex;
+  flex-direction: column;
+  border: 6px solid #faa61a; 
+    align-items: center;
+  justify-content: center;
+  font-family: 'ArabicFont', Arial, sans-serif;
+  margin-bottom: 20px;
+    background: linear-gradient(#0b1626, #031e49, #040f21);
+  color: rgb(206, 195, 0);
+  font-size: 1.5rem;
+}
+
+
+.court-setting-card-header .welcome-page-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-btn:hover {
+  background-color: #81dd17;
+  border-color: #e2df0b;
+}
+
+.login-back {
+  background-color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+
+
+.login-back {
+  background-color: crimson;
+  border-color: #b9c236;
+
+}
+
+/* Auth form styles */
+.card-header-auth{
+  box-shadow: 0 0 5px #faa61a, /* ظل فاتح */
+              0 5px 10px #faa61a; /* ظل داكن */
+
+margin: 0 auto;
+            }
+
+.auth-form-card {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  background-color: #051f42;
+  box-shadow: 0 0 15px #faa61a, /* ظل فاتح */
+              0 10px 10px #faa61a; /* ظل داكن */
+
+              
+  background-image: url('./images/bg-pattern.png'); 
+}
+
+/* Form label styles */
+.auth-form-card label {
+  color: #fff; /* Set text color to white */
+}
+
+/* Form input styles */
+.auth-form-card input {
+  background-color: transparent;
+  color: #fff; /* Set text color to white */
+  border-color: #fff; /* Set border color to white */
+}
+
+/* Form input focus styles */
+.auth-form-card input:focus {
+  box-shadow: 0 0 5px #fff; /* Add white shadow when the input is focused */
+  outline: none;
+}
+/* Custom styles for the login button */
+/* Custom styles for the login button */
+.ice-btn {
+  background-color: #f0f5f9; /* Ice color for background */
+  color: #218838; /* Green color for text */
+  border-color: #c3e6cb; /* Light green color for border */
+}
+
+  /**Guest Page End***/
+
+/*Court Setting End*/
+.nav-link {
+    font-size: 24px;
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+
+
+    }
+
+
+  .navbar-brand {
+    margin-right: 1rem;
+    padding: 0.5rem 0;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    color: #ffffff;
+  }
+
+  .navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+  }
+
+  .navbar-nav {
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+    flex-direction:column;
+    margin-right: auto;
+  }
+
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 991.98px) {
+    .navbar-nav {
+      flex-direction: column;
+    }
+
+    .navbar-collapse {
+      justify-content: center;
+    }
+
+    .navbar-nav .nav-link-custom {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .my-card-component {
+    font-size: 20px;
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+  }
+
+  .my-card-component h1,
+  .my-card-component h2 {
+    font-weight: bold;
+  }
+
+  .my-card-component .btn-group .btn {
+    font-size: 20px;
+  }
+
+  .my-card-component .table {
+    font-size: 20px;
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+  }
+
+  .my-card-component .modal-content {
+    font-size: 20px;
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+  }
+
+  .data-row {
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+    margin-bottom: 10px;
+  }
+
+  h3,
+  h4 {
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+    color: #ff9800;
+  }
+
+
+
+  .form-header {
+    font-family: 'THARWAT EMARA RUQAA LIGHT', Arial, sans-serif;
+    text-align: center;
+    background-color: #c8daff;
+  }
+
+
+
+  .table {
+    margin-top: 10px;
+  }
+
+  .table th {
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Cairo';
+    background-color: rgb(255 242 186);
+    color: #296571;
+
+  }
+.table tbody{
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Cairo';
+
+    color: #296571;
+}
+
+
+
+
+  .align-items-center {
+    align-items: center;
+  }
+
+  .mt-6 {
+    margin-top: 6px;
+  }
+
+  .mb-0 {
+    margin-bottom: 0;
+  }
+  /* LegCase List */
+  .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .button-container > * {
+      margin-bottom: 5px;
+    }
+
+    .icon-card {
+      background-color: #f8d7da;
+      /* Cute color for the card background */
+      border: none;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .icon-card:hover {
+      background-color: #e8e87a;
+      /* Cute color for the card background on hover */
+    }
+
+    .icon-circle {
+      background-color: #0a1e3d;
+      /* Cute color for the circle background */
+      width: 80px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+
+    .icon-card-title {
+      color: #dc3545;
+      /* Cute color for the title text */
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .icon-card-text {
+      color: #6c757d;
+      /* Cute color for the text */
+      font-size: 21px;
+    }
+
+
+
+    .event-card:hover {
+      background-color: #f2f2f2;
+    }
+
+
+
+    /* Other styles */
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #555;
+    }
+
+ 
+
+    .text-muted {
+      color: #999;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 767px) {
+      .icon-card {
+        padding: 10px;
+      }
+
+      .icon-card-title {
+        font-size: 20px;
+      }
+
+      .icon-card-text {
+        font-size: 18px;
+      }
+
+      .event-card {
+        margin-bottom: 20px;
+      }
+    }
+  /* Other styles */
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #555;
+    }
+
+
+
+    .text-muted {
+      color: #999;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 767px) {
+
+      .icon-card-title {
+        font-size: 20px;
+      }
+
+      .icon-card-text {
+        font-size: 18px;
+      }
+
+      .event-card {
+        margin-bottom: 20px;
+      }
+    }
+
+    /* Tablet styles */
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      .section-title {
+        font-size: 28px;
+      }
+
+      .button {
+        padding: 8px 16px;
+      }
+    }
+
+    /* Mobile styles */
+    @media screen and (max-width: 767px) {
+      .section-title {
+        font-size: 24px;
+      }
+
+      .button {
+        padding: 6px 12px;
+      }
+    }
+    .custom-card-header{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius : 8px;
+        padding: 20px;
+        font-family: 'Cairo', sans-serif;
+      font-weight: bold;
+        background : #103A51;
+        text-align: center;
+
+        color: #FFC108;
+
+
+    }
+    .add-link-client{
+      color: #0a1e3d;
+      font-size: medium;
+    font-family: "cairo",sans-serif;
+      font-weight: bold;
+    }
+    .leg-details-banner-image {
+      width: 250px;
+      height: 100px;
+    }
+
+
+    .leg-case-details-card {
+      border-radius: 10px;
+    background: rgb(9, 45, 54);
+      padding: 20px;
+    }
+    .data-box {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .data-box:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 215, 0, 0.8) 50%,
+        transparent 100%
+      );
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .data-box:hover:before,
+    .data-box:focus:before {
+      transform: translateX(0%);
+    }
+
+    .data-label,
+    .data-value {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .data-row {
+      margin-bottom: 20px;
+    }
+
+    .data-box {
+      border-radius: 5px;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+
+    .data-box:hover {
+      transform: scale(1.05);
+    }
+
+    .data-label {
+      color: #FFFFFF;
+      font-weight: bold;
+      font-family: "cairo",sans-serif;
+      font-size: 1.7rem;
+    }
+
+    .data-value {
+      color: #031738;
+      font-weight: bold;
+      font-family: "cairo",sans-serif;
+      font-size: 1.2rem;
+    }
