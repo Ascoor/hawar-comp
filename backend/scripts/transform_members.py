@@ -25,6 +25,13 @@ RELATION_MAP = {
     'والدة': 'Parent',
 }
 
+# Membership category mapping based on legacy Arabic text
+CATEGORY_MAP = {
+    'عضو عامل': 'Primary',
+    'عضو تابع': 'Family',
+    'عضو مؤسس': 'Honorary',
+}
+
 def parse_date(value: str):
     """Return date in YYYY-MM-DD or None."""
     value = value.strip()
@@ -34,6 +41,42 @@ def parse_date(value: str):
         except ValueError:
             continue
     return None
+
+
+def parse_sql(sql_path: Path):
+    """Yield rows from a legacy .sql dump containing INSERT statements."""
+    import re
+
+    text = sql_path.read_text(encoding="utf-8", errors="ignore")
+    pattern = re.compile(r"INSERT\s+INTO\s+`?\w+`?\s*\(([^)]*)\)\s*VALUES\s*(.*?);", re.DOTALL | re.IGNORECASE)
+    row_pattern = re.compile(r"\((.*?)\)(?:,|$)", re.DOTALL)
+
+    for cols_str, values_part in pattern.findall(text):
+        columns = [c.strip("` ") for c in cols_str.split(',')]
+        for row_txt in row_pattern.findall(values_part):
+            values = next(csv.reader([row_txt], quotechar="'", skipinitialspace=True))
+            yield dict(zip(columns, values))
+
+
+def load_data(path: Path):
+    """Return list of dicts from CSV or SQL file."""
+    if path.suffix.lower() == ".sql":
+        return list(parse_sql(path))
+    with path.open(newline='', encoding='utf-8-sig') as fh:
+        return list(csv.DictReader(fh))
+
+
+def deduplicate(rows):
+    """Remove duplicate members by code or national id."""
+    seen = set()
+    unique = []
+    for r in rows:
+        key = (r.get('Mem_Code'), r.get('Mem_NID'))
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(r)
+    return unique
 
 
 def clean_row(row: dict) -> dict:
@@ -47,23 +90,25 @@ def clean_row(row: dict) -> dict:
         'gender': GENDER_MAP.get(row.get('Mem_Sex', '').strip()),
         'status': STATUS_MAP.get(row.get('Mem_Status', '').strip()),
         'relation': RELATION_MAP.get(row.get('Mem_Relation', '').strip()),
-        'address': row.get('Mem_Address'),
-        'mobile': row.get('Mem_Mobile'),
+        'category': CATEGORY_MAP.get(row.get('Mem_MembershipType', '').strip()),
+        'fee_year': row.get('Fee_Year'),
+        'fee_amount': row.get('Fee_Amount'),
     }
 
 
-def transform(csv_path: Path):
-    with csv_path.open(newline='', encoding='utf-8') as fh:
-        reader = csv.DictReader(fh)
-        cleaned = [clean_row(r) for r in reader]
+def transform(path: Path):
+    """Return cleaned member rows from *path* (CSV or SQL)."""
+    raw_rows = load_data(path)
+    raw_rows = deduplicate(raw_rows)
+    cleaned = [clean_row(r) for r in raw_rows]
     return cleaned
 
 if __name__ == '__main__':
     import json, sys
     import argparse
 
-    parser = argparse.ArgumentParser(description="Clean legacy member CSV data")
-    parser.add_argument("file", help="Path to legacy CSV")
+    parser = argparse.ArgumentParser(description="Clean legacy member CSV or SQL data")
+    parser.add_argument("file", help="Path to legacy file (.csv or .sql)")
     parser.add_argument("--csv", action="store_true", help="Output CSV instead of JSON")
     args = parser.parse_args()
 
