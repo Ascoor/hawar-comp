@@ -5,9 +5,73 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Fee;
+use Illuminate\Validation\Rule;
 
 class MemberController extends Controller
 {
+    public function index(Request $request)
+    {
+        $query = Member::with(['category','relation','status','family','fees']);
+        if ($request->filled('category')) {
+            $query->whereHas('category', function($q) use ($request) {
+                $q->where('name', $request->category);
+            });
+        }
+        if ($request->filled('status')) {
+            $query->whereHas('status', function($q) use ($request) {
+                $q->where('name', $request->status);
+            });
+        }
+        if ($request->filled('family')) {
+            $query->where('family_id', $request->family);
+        }
+        $members = $query->paginate(10);
+        return response()->json($members);
+    }
+
+    public function show($id)
+    {
+        $member = Member::with(['category','relation','status','family','fees'])
+            ->findOrFail($id);
+        return response()->json($member);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'Mem_Name' => 'required|string',
+            'Mem_Code' => 'nullable|string',
+            'category_id' => 'nullable|exists:member_categories,id',
+            'relation_id' => 'nullable|exists:member_relations,id',
+            'status_id' => 'nullable|exists:member_statuses,id',
+            'family_id' => 'nullable|exists:members,id'
+        ]);
+        $member = Member::create($data);
+        return response()->json($member, 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $member = Member::findOrFail($id);
+        $data = $request->validate([
+            'Mem_Name' => 'sometimes|string',
+            'Mem_Code' => 'sometimes|string',
+            'category_id' => 'nullable|exists:member_categories,id',
+            'relation_id' => 'nullable|exists:member_relations,id',
+            'status_id' => 'nullable|exists:member_statuses,id',
+            'family_id' => 'nullable|exists:members,id'
+        ]);
+        $member->update($data);
+        return response()->json($member);
+    }
+
+    public function destroy($id)
+    {
+        $member = Member::findOrFail($id);
+        $member->delete();
+        return response()->json(['message' => 'deleted']);
+    }
+
     public function memberCount()
     {
         $workMemberCount = Member::where('MembershipType', 'عضو عامل')->count();
