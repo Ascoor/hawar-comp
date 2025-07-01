@@ -13,10 +13,10 @@ php artisan db:seed
 
 ## 2. تنظيف البيانات القديمة
 
-استخدم السكربت Python الموجود في `backend/scripts/transform_members.py` لتحويل ملف SQL أو CSV القديم إلى ملف CSV نظيف:
+استخدم السكربت Python الموجود في `backend/scripts/transform_members.py` لتحويل ملف SQL أو CSV القديم إلى ملف CSV نظيف مع إزالة التكرارات:
 
 ```bash
-python backend/scripts/transform_members.py path/to/legacy.csv > clean.csv
+python backend/scripts/transform_members.py path/to/legacy.sql --csv > clean.csv
 ```
 
 يجب أن يحتوي الملف الناتج على الحقول:
