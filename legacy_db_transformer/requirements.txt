@@ -2,3 +2,4 @@ sqlparse
 pandas
 SQLAlchemy
 python-dotenv
+pymysql
