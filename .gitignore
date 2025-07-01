@@ -8,6 +8,9 @@ legacy_db_transformer/venv/
 
 # It is essential for maintaining compatibility with older database structures.
 legacy_db_transformer/transform.py
+legacy_db_transformer/sqls/csv/members_with_fees.csv
+legacy_db_transformer/sqls/csv/members_with_header.csv
+legacy_db_transformer/sqls/csv/members_with_parents.csv
 # This script is crucial for the migration process and should be kept in the repository.
 # It is not meant to be ignored in the production environment.
 # This directory contains the Python script for transforming legacy database schemas.
