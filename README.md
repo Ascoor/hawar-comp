@@ -1,3 +1,4 @@
+ 
 # Hawar Club Management
 
 This repository contains the React frontend and database schema for the Hawar Club management system. The backend source code is not included but the application expects it to expose a REST API.
@@ -16,5 +17,20 @@ This repository contains the React frontend and database schema for the Hawar Cl
 Run your backend service so that it listens on `http://localhost:8000` (or any URL you prefer). The frontend reads this value from `frontend/src/config.js`.
 
 ## Running the Frontend
+ 
+# hawar-comp
 
-See [frontend/README.md](frontend/README.md) for details on installing dependencies and running the React development server.
+## Configuration
+
+The React frontend reads its API endpoint from `frontend/src/config.js`. The file exports an object with a `baseURL` property pointing to the backend server:
+
+```javascript
+const API_CONFIG = {
+  baseURL: 'http://localhost:8000',
+};
+
+export default API_CONFIG;
+```
+
+Modify `baseURL` to match the host and port of your API. For example, when running in production you might set it to `https://api.example.com`. You can create different copies of this file for development, staging, and production environments as needed.
+ 
