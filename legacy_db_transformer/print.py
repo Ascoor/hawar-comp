@@ -1,14 +1,14 @@
 import pandas as pd
 import mysql.connector
-import glob
 
+
+import glob# إعدادات الاتصال بقاعدة البيانات
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'askar',
     'password': 'Askar@1984',
     'database': 'laravel'
 }
-
 conn = mysql.connector.connect(**DB_CONFIG)
 
 # 1. عدد الأسطر في كل جدول

@@ -9,13 +9,11 @@ DB_CONFIG = {
     'database': 'laravel'
 }
 
-# جميع الملفات التي تبدأ بـ members_part
 csv_files = glob.glob("csv_split/members_part*.csv")
 
 for csv_file in csv_files:
     print(f"جاري رفع: {csv_file}")
     df = pd.read_csv(csv_file, encoding="utf-8-sig")
-    # احذف أي أعمدة زيادة غير موجودة في الجدول (لو فيه)
     allowed_cols = [
         'Mem_ID','Mem_Name','Mem_Code','Mem_BOD','Mem_NID','Mem_GraduationGrade',
         'Mem_ParentMember','Mem_Sex','Mem_JobCategory','Mem_Job','Mem_MembershipType','Mem_Relegion',
@@ -26,8 +24,10 @@ for csv_file in csv_files:
         'created_at','updated_at'
     ]
     df = df[[c for c in allowed_cols if c in df.columns]]
-    df.fillna("", inplace=True)
-    # الاتصال بقاعدة البيانات
+    df = df.astype(str)
+    df.replace("nan", "", inplace=True)
+    df.replace("None", "", inplace=True)
+
     conn = mysql.connector.connect(**DB_CONFIG)
     cursor = conn.cursor()
     cols = ",".join([f"`{col}`" for col in df.columns])
