@@ -8,25 +8,29 @@ use Carbon\Carbon;
 
 /**
  * Seed membership renewal fees and settings.
+ *
+ * This assumes the `renewal_settings` table uses the
+ * `membership_type`, `fee`, and `billing_cycle_months` columns
+ * created by the migration.
  */
 class MembershipRenewSettingsSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('membership_renew_settings')->insert([
+        DB::table('renewal_settings')->insert([
             [
                 'id' => 1,
-                'category_id' => 1,
-                'year' => 2024,
-                'fee_amount' => 75.00,
+                'membership_type' => 'Primary',
+                'fee' => 75.00,
+                'billing_cycle_months' => 12,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => 2,
-                'category_id' => 2,
-                'year' => 2024,
-                'fee_amount' => 25.00,
+                'membership_type' => 'Family',
+                'fee' => 25.00,
+                'billing_cycle_months' => 12,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
