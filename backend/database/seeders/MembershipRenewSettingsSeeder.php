@@ -16,17 +16,17 @@ class MembershipRenewSettingsSeeder extends Seeder
         DB::table('renewal_settings')->insert([
             [
                 'id' => 1,
-                'category_id' => 1,
-                'year' => 2024,
-                'fee_amount' => 75.00,
+                'membership_type' => 'Primary',
+                'fee' => 75.00,
+                'billing_cycle_months' => 12,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => 2,
-                'category_id' => 2,
-                'year' => 2024,
-                'fee_amount' => 25.00,
+                'membership_type' => 'Family',
+                'fee' => 25.00,
+                'billing_cycle_months' => 12,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
