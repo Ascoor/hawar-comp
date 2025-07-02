@@ -28,6 +28,16 @@ python backend/scripts/normalize_membership_csv.py path/to/legacy.csv > clean.cs
 الملف الناتج يحتوي على الأعمدة:
 `id,name,code,national_id,birth_date,gender,category,relation_type,status,parent_member_id,join_date,address,phone,mobile,notes,last_paid_fee`.
 
+لدمج ملفات CSV الكبيرة الموجودة في `legacy_db_transformer/sqls/csv` وتحويلها
+إلى نفس البنية النهائية يمكن تشغيل السكربت:
+
+```bash
+python legacy_db_transformer/rebuild_csv.py
+```
+
+سيقوم بإنشاء ملف `members_restructured.csv` بنفس أعمدة جدول `members` في
+Laravel.
+
 ## 3. استيراد البيانات
 
 بعد الحصول على الملف النظيف يتم تشغيل الأمر الآتي:
