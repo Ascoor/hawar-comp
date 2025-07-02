@@ -12,7 +12,7 @@ class MemberStatusSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('member_status')->insert([
+        DB::table('member_statuses')->insert([
             ['id' => 1, 'name' => 'Active'],
             ['id' => 2, 'name' => 'Suspended'],
             ['id' => 3, 'name' => 'Expired'],

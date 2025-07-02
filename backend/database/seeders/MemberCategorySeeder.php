@@ -12,7 +12,7 @@ class MemberCategorySeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('member_category')->insert([
+        DB::table('member_categories')->insert([
             ['id' => 1, 'name' => 'Primary'],
             ['id' => 2, 'name' => 'Family'],
             ['id' => 3, 'name' => 'Honorary'],

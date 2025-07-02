@@ -12,7 +12,7 @@ class MemberRelationSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('member_relation')->insert([
+        DB::table('member_relations')->insert([
             ['id' => 1, 'name' => 'Self'],
             ['id' => 2, 'name' => 'Spouse'],
             ['id' => 3, 'name' => 'Child'],

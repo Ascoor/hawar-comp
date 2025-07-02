@@ -13,7 +13,7 @@ class MembershipRenewSettingsSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('membership_renew_settings')->insert([
+        DB::table('renewal_settings')->insert([
             [
                 'id' => 1,
                 'category_id' => 1,
