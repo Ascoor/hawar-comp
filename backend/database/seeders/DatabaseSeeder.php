@@ -14,14 +14,11 @@ class DatabaseSeeder extends Seeder
         // Lookup tables first
         $this->call([
             MemberCategorySeeder::class,
-            MemberRelationSeeder::class,
+            MemberRelationsSeeder::class,
             MemberStatusSeeder::class,
-            MembershipRenewSettingsSeeder::class,
+            MembershipRenewSettingSeeder::class,
         ]);
 
-        // Core member data
-        $this->call([
-            MemberDetailsSeeder::class,
-        ]);
+ 
     }
 }

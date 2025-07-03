@@ -3,29 +3,49 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\DB;
 class MemberRelationsSeeder extends Seeder
 {
-    public function run(): void
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
     {
-        $relations = [
-            'ابن',
-            'ابنة',
-            'زوج',
-            'زوجة',
-            'والد الزوج',
-            'والدة الزوج',
-            'والد الزوجة',
-            'والدة الزوجة',
-        ];
+        DB::table('member_relations')->insert([
+            [
+                'relation_name' => 'Owner',
 
-        foreach ($relations as $name) {
-            DB::table('member_relations')->insert([
-                'name' => $name,
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]);
-        }
+            ],
+            [
+                'relation_name' => 'Husband',
+
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'relation_name' => 'Wife',
+
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'relation_name' => 'Son',
+
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'relation_name' => 'daughter',
+
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+        ]);
     }
 }
